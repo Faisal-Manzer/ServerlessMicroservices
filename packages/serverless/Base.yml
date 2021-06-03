@@ -1,0 +1,9 @@
+domains:
+  prod: ${self:service}.aria16.in
+  dev: ${self:service}.dev.aria16.in
+
+customDomain:
+  basePath: ""
+  domainName: ${self:custom.domains.${self:provider.stage}}
+  stage: "${self:provider.stage}"
+  createRoute53Record: true
