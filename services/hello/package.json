@@ -1,5 +1,5 @@
 {
-  "name": "@services/ping",
+  "name": "@services/hello",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,10 +10,15 @@
     "@tsconfig/node14": "^1.0.0",
     "@types/aws-lambda": "^8.10.76",
     "@types/jest": "^26.0.23",
+    "axios": "^0.21.1",
     "serverless": "^2.44.0",
     "serverless-bundle": "^4.3.1",
     "serverless-domain-manager": "^5.1.0",
+    "serverless-dotenv-plugin": "^3.9.0",
     "serverless-plugin-monorepo": "^0.10.0",
     "serverless-pseudo-parameters": "^2.5.0"
+  },
+  "dependencies": {
+    "@packages/serverless": "^0.0.1"
   }
 }

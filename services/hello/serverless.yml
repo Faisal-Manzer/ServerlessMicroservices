@@ -5,6 +5,7 @@ plugins:
   - serverless-pseudo-parameters
   - serverless-plugin-monorepo
   - serverless-domain-manager
+  - serverless-dotenv-plugin
 
 provider:
   name: aws

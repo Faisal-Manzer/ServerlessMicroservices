@@ -1,5 +1,12 @@
+/**
+ * @jest-environment node
+ */
+
 import {APIGatewayEvent, Context} from "aws-lambda";
+import axios from "axios";
+
 import handlers from "../handlers";
+
 
 test("say hello", async () => {
   const event = {} as APIGatewayEvent;
@@ -8,4 +15,11 @@ test("say hello", async () => {
 
   expect(response.statusCode).toEqual(200);
   expect(response.body).toBe("welcome");
+});
+
+test("api hello", async () => {
+  const response = await axios.get('https://hello.dev.aria16.in');
+
+  expect(response.status).toEqual(200);
+  expect(response.data).toBe("welcome");
 });
