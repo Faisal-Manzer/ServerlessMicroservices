@@ -1,6 +1,6 @@
-const {config} = require('@packages/base');
+import config from "@packages/base/config";
 
-module.exports = config('hello', () => ({
+export = config('hello', () => ({
     functions: {
         hello: {
             handler: 'handlers/hello.handler',

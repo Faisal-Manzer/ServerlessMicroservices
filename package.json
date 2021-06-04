@@ -1,4 +1,5 @@
 {
+  "name": "@aria/root",
   "private": true,
   "workspaces": [
     "packages/*",
@@ -8,6 +9,7 @@
     "lint": "eslint --ext .js,.ts ."
   },
   "devDependencies": {
+    "@tsconfig/node14": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "eslint": "^7.27.0",

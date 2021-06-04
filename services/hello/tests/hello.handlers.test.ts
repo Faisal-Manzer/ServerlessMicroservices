@@ -8,7 +8,6 @@ import axios from 'axios';
 import { getBaseURl } from '@packages/base/helpers'
 
 import handlers from '../handlers';
-// @ts-ignore
 import config from '../serverless';
 
 
