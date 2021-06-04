@@ -1,6 +1,49 @@
-import config from "@packages/base/config";
+import base from '@packages/base';
 
-export = config('hello', () => ({
+export = base.config('hello', ({options: {stage}}) => ({
+    provider: {
+        environment: {
+            HELLO_TABLE_NAME: '${self:custom.HelloTable.name}',
+        },
+        iam: {
+          role: {
+              statements: [
+                  {
+                      Effect: 'Allow',
+                      Action: [
+                          'dynamodb:PutItem'
+                      ],
+                      Resource: [
+                          '${self:custom.HelloTable.arn}',
+                      ]
+                  }
+              ]
+          }
+        },
+    },
+    resources: {
+        Resources: {
+            HelloTable: {
+                Type: 'AWS::DynamoDB::Table',
+                Properties: {
+                    TableName: `HelloTable-${stage}`,
+                    BillingMode: 'PAY_PER_REQUEST',
+                    AttributeDefinitions: [
+                        {
+                            AttributeName: 'id',
+                            AttributeType: 'S'
+                        },
+                    ],
+                    KeySchema: [
+                        {
+                            AttributeName: 'id',
+                            KeyType: 'HASH'
+                        }
+                    ]
+                }
+            }
+        }
+    },
     functions: {
         hello: {
             handler: 'handlers/hello.handler',
@@ -12,6 +55,16 @@ export = config('hello', () => ({
                     }
                 }
             ]
+        }
+    },
+    custom: {
+        HelloTable: {
+            name: {
+                'Ref': 'HelloTable'
+            },
+            arn: {
+                'Fn::GetAtt': ['HelloTable', 'Arn']
+            }
         }
     }
 }));

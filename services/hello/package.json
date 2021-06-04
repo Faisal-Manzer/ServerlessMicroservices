@@ -10,14 +10,15 @@
     "@tsconfig/node14": "^1.0.0",
     "@types/aws-lambda": "^8.10.76",
     "@types/jest": "^26.0.23",
+    "@types/uuid": "^8.3.0",
     "axios": "^0.21.1",
     "serverless": "^2.44.0",
     "serverless-bundle": "^4.3.1",
     "serverless-domain-manager": "^5.1.0",
-    "serverless-plugin-monorepo": "^0.10.0",
     "serverless-pseudo-parameters": "^2.5.0"
   },
   "dependencies": {
-    "@packages/base": "file:../../packages/base"
+    "@packages/base": "file:../../packages/base",
+    "uuid": "^8.3.2"
   }
 }

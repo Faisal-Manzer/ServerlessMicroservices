@@ -1,6 +1,5 @@
 import path from 'path';
 import dotenv from 'dotenv';
-
 const {parsed: env = {}} = dotenv.config({
     path: path.join(__dirname, '.env')
 });
@@ -18,6 +17,7 @@ commander
 const options = commander.opts();
 const {stage, region, domain} = options;
 
+
 interface ConfigParam {
     options: typeof options,
     env: typeof env
@@ -29,7 +29,6 @@ export default (serviceName: string, config: Config) => merge({}, {
     plugins: [
         'serverless-bundle',
         'serverless-pseudo-parameters',
-        'serverless-plugin-monorepo',
         'serverless-domain-manager',
     ],
     provider: {
@@ -37,7 +36,8 @@ export default (serviceName: string, config: Config) => merge({}, {
         runtime: 'nodejs14.x',
         memorySize: 256,
         stage,
-        region
+        region,
+        lambdaHashingVersion: 20201221
     },
     custom: {
         bundle: {
