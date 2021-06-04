@@ -20,9 +20,9 @@ export const handler = async (
         userAgent: event?.headers?.['User-Agent'],
     };
 
-    if (process.env.HELLO_TABLE_NAME)
+    if (process.env.HELLO_TABLE)
         await dynamodb.put({
-            TableName: process.env.HELLO_TABLE_NAME as string,
+            TableName: process.env.HELLO_TABLE as string,
             Item: payload,
         }).promise();
 

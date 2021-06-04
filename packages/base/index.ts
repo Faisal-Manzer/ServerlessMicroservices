@@ -1,5 +1,6 @@
 import config from "./config";
+import * as configWare from "./configWare";
 
-export default {
-    config
+export {
+    config, configWare
 }

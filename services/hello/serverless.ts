@@ -1,70 +1,26 @@
-import base from '@packages/base';
+import {config} from '@packages/base';
+import {bootstrap, dynamoDB} from "@packages/base/configWare";
+import * as ddb from '@packages/base/configWare/dynamoDB';
 
-export = base.config('hello', ({options: {stage}}) => ({
-    provider: {
-        environment: {
-            HELLO_TABLE_NAME: '${self:custom.HelloTable.name}',
-        },
-        iam: {
-          role: {
-              statements: [
-                  {
-                      Effect: 'Allow',
-                      Action: [
-                          'dynamodb:PutItem'
-                      ],
-                      Resource: [
-                          '${self:custom.HelloTable.arn}',
-                      ]
-                  }
-              ]
-          }
-        },
-    },
-    resources: {
-        Resources: {
-            HelloTable: {
-                Type: 'AWS::DynamoDB::Table',
-                Properties: {
-                    TableName: `HelloTable-${stage}`,
-                    BillingMode: 'PAY_PER_REQUEST',
-                    AttributeDefinitions: [
-                        {
-                            AttributeName: 'id',
-                            AttributeType: 'S'
-                        },
-                    ],
-                    KeySchema: [
-                        {
-                            AttributeName: 'id',
-                            KeyType: 'HASH'
+export = config
+    .use(bootstrap('hello'))
+    .use(dynamoDB({
+        table: 'HelloTable',
+        permissions: [ddb.PutItem],
+    }))
+    .merge({
+        functions: {
+            hello: {
+                handler: 'handlers/hello.handler',
+                events: [
+                    {
+                        http: {
+                            method: 'GET',
+                            path: '/'
                         }
-                    ]
-                }
-            }
-        }
-    },
-    functions: {
-        hello: {
-            handler: 'handlers/hello.handler',
-            events: [
-                {
-                    http: {
-                        method: 'GET',
-                        path: '/'
                     }
-                }
-            ]
-        }
-    },
-    custom: {
-        HelloTable: {
-            name: {
-                'Ref': 'HelloTable'
-            },
-            arn: {
-                'Fn::GetAtt': ['HelloTable', 'Arn']
+                ]
             }
-        }
-    }
-}));
+        },
+    })
+    .finish();
