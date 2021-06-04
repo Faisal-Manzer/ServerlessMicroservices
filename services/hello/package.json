@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "test": "serverless-bundle test",
+    "test": "serverless-bundle test --testEnvironment node",
     "sls": "serverless"
   },
   "devDependencies": {
@@ -14,11 +14,10 @@
     "serverless": "^2.44.0",
     "serverless-bundle": "^4.3.1",
     "serverless-domain-manager": "^5.1.0",
-    "serverless-dotenv-plugin": "^3.9.0",
     "serverless-plugin-monorepo": "^0.10.0",
     "serverless-pseudo-parameters": "^2.5.0"
   },
   "dependencies": {
-    "@packages/serverless": "^0.0.1"
+    "@packages/base": "file:../../packages/base"
   }
 }

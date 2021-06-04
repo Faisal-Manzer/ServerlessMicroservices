@@ -1,0 +1,11 @@
+{
+    "name": "@packages/base",
+    "version": "0.0.1",
+    "private": true,
+    "devDependencies": {
+        "commander": "^7.2.0",
+        "dotenv": "^10.0.0",
+        "find-yarn-workspace-root": "^2.0.0",
+        "lodash": "^4.17.21"
+    }
+}
