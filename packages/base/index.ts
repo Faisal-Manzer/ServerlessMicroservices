@@ -1,6 +1,6 @@
-import config from "./config";
+import serverless from "./serverless";
 import * as configWare from "./configWare";
 
 export {
-    config, configWare
+    serverless, configWare
 }
