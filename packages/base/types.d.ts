@@ -1,5 +1,5 @@
 export interface ServerlessConfig {
-    [key as string]: any;
+    [key: string]: any;
 }
 
 export interface Environment {
@@ -10,7 +10,6 @@ export interface Environment {
 export interface CLIOptions {
     stage: string,
     region: string,
-    domain: string
 }
 
 export type ConfigWare = (

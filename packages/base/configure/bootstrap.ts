@@ -2,7 +2,7 @@ import {ConfigWare} from "../types";
 
 const bootstrap =
     (serviceName: string): ConfigWare =>
-        ({stage, region, domain}, env) => ({
+        ({stage, region}, env) => ({
             service: serviceName,
             plugins: [
                 'serverless-bundle',
@@ -23,7 +23,7 @@ const bootstrap =
                 },
                 customDomain: {
                     basePath: '',
-                    domainName: `${serviceName}.${stage === 'prod' ? '' : `${stage}.`}${domain}`,
+                    domainName: `${serviceName}.${stage === 'prod' ? '' : `${stage}.`}${env.DEFAULT_DOMAIN}`,
                     stage,
                     createRoute53Record: true
                 }

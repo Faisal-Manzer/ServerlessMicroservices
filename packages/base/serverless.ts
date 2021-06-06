@@ -6,7 +6,7 @@ import _ from 'lodash';
 import {ConfigWare, ServerlessConfig, Environment, CLIOptions} from "./types";
 
 export class Serverless {
-    private current = {}
+    private current = {};
     private readonly env: Environment;
     private readonly cliOptions: CLIOptions;
 
@@ -21,7 +21,6 @@ export class Serverless {
         commander
             .option('--stage <n>', 'stage', 'dev')
             .option('--region <n>', 'region', env.DEFAULT_REGION)
-            .option('--domain <n>', 'domain', env.DEFAULT_DOMAIN)
             .allowUnknownOption(true)
             .parse(process.argv);
 
