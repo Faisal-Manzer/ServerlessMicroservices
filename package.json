@@ -1,0 +1,19 @@
+{
+  "name": "@aria/root",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "services/*"
+  ],
+  "scripts": {
+    "lint": "eslint --ext .js,.ts ."
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "typescript": "^4.3.2"
+  }
+}
