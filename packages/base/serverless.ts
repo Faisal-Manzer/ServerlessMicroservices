@@ -1,12 +1,13 @@
 import path from 'path';
 import dotenv from 'dotenv';
 import commander from 'commander';
+import { AWS as AWSConfig } from '@serverless/typescript';
 import _ from 'lodash';
 
 import {ConfigWare, ServerlessConfig, Environment, CLIOptions} from "./types";
 
 export class Serverless {
-    private current = {};
+    private current: AWSConfig = {} as AWSConfig;
     private readonly env: Environment;
     private readonly cliOptions: CLIOptions;
 
@@ -29,7 +30,7 @@ export class Serverless {
     }
 
     merge(config: ServerlessConfig) {
-        this.current = _.merge({}, this.current, config);
+        this.current = _.merge({}, this.current, config) as AWSConfig;
         return this;
     }
 
